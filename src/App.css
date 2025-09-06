@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.App {
+  text-align: center;
+  padding: 3rem;          /* More breathing room */
+}
+
+h1, h2, h3 {
+  margin-bottom: 1.5rem;  /* Space below headings */
+}
+
+p {
+  margin-bottom: 1rem;    /* Space below paragraphs */
+}
+
+button {
+  padding: 12px 24px;     /* Bigger buttons */
+  margin: 1rem;           /* Space around buttons */
+  border: none;
+  border-radius: 6px;
+  background-color: #ff6600;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #e65c00;
+}
+
+.container {
+  max-width: 800px;       /* Prevent text stretching too wide */
+  margin: 0 auto;         /* Center content */
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
