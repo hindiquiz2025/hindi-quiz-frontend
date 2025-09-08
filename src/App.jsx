@@ -155,6 +155,59 @@ const questions = [
   }
 ];
 
+const CircularTimer = ({ timeLeft, duration }) => {
+  const radius = 30
+  const circumference = 2 * Math.PI * radius
+  const progress = (timeLeft / duration) * circumference
+
+  // Decide color based on remaining time
+  let strokeColor = "#2ecc71" // green
+  if (timeLeft <= 10) {
+    strokeColor = "#e63946" // red
+  } else if (timeLeft <= 20) {
+    strokeColor = "#f39c12" // orange
+  }
+
+  return (
+    <svg width="90" height="90" className="circular-timer">
+      <circle
+        cx="45"
+        cy="45"
+        r={radius}
+        stroke="#eee"
+        strokeWidth="6"
+        fill="none"
+      />
+      <circle
+        cx="45"
+        cy="45"
+        r={radius}
+        stroke={strokeColor}
+        strokeWidth="6"
+        fill="none"
+        strokeDasharray={circumference}
+        strokeDashoffset={circumference - progress}
+        strokeLinecap="round"
+        style={{ transition: "stroke-dashoffset 1s linear, stroke 0.5s ease" }}
+      />
+      <text
+        x="50%"
+        y="50%"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fontSize="18"
+        fontWeight="bold"
+        fill="#333"
+      >
+        {timeLeft}s
+      </text>
+    </svg>
+  )
+}
+
+
+
+
 function App() {
   const [currentScreen, setCurrentScreen] = useState('registration')
   const [participant, setParticipant] = useState({
@@ -371,9 +424,11 @@ function App() {
             
             <div className="quiz-info">
               <ul>
-                <li>कोई वापसी विकल्प नहीं है</li>
-                <li>सही उत्तर: +3 अंक</li>
-                <li>गलत उत्तर: -1 अंक</li>
+                <li>⏳ प्रत्येक प्रश्न के लिए समय: 30 सेकंड</li>
+                <li>❌ एक बार विकल्प चुनने के बाद बदल नहीं सकते</li>
+                <li>✅ सही उत्तर: +3 अंक</li>
+                <li>❌ गलत उत्तर: -1 अंक</li>
+                <li>🔙 कोई वापसी विकल्प नहीं है</li>
               </ul>
             </div>
           </div>
@@ -390,7 +445,7 @@ function App() {
         <div className="quiz-container">
           <div className="quiz-header">
             <h2>हिंदी राजभाषा प्रश्नोत्तरी</h2>
-            <div className="timer">⏰ {timeLeft}सेकंड</div>
+            <CircularTimer timeLeft={timeLeft} duration={30} />
           </div>
           
           <div className="quiz-progress">
