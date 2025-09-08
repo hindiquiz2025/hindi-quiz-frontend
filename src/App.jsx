@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
+const QUESTION_TIME = 30; // seconds
 const questions = [
   {
     id: 1,
@@ -166,7 +167,7 @@ function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState([])
   const [selectedAnswer, setSelectedAnswer] = useState(null)
-  const [timeLeft, setTimeLeft] = useState(7)
+  const [timeLeft, setTimeLeft] = useState(QUESTION_TIME)
   const [score, setScore] = useState(0)
   const [showResults, setShowResults] = useState(false)
   const [quizStartTime, setQuizStartTime] = useState(null)
@@ -240,15 +241,14 @@ function App() {
       setParticipant(registeredParticipant)
       setCurrentScreen('quiz')
       setQuizStartTime(Date.now())
-      setTimeLeft(7)
+      setTimeLeft(QUESTION_TIME)
     } catch (error) {
       alert('पंजीकरण में त्रुटि: ' + error.message)
     }
   }
 
   const handleAnswerSelect = (answerIndex) => {
-    if (selectedAnswer !== null) return
-    setSelectedAnswer(answerIndex)
+    setSelectedAnswer(answerIndex)   // overwrites old choice
   }
 
   const handleNextQuestion = () => {
@@ -272,7 +272,7 @@ function App() {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1)
       setSelectedAnswer(null)
-      setTimeLeft(7)
+      setTimeLeft(QUESTION_TIME)
     } else {
       finishQuiz(newAnswers, newScore)
     }
@@ -298,7 +298,7 @@ function App() {
     setCurrentQuestion(0)
     setAnswers([])
     setSelectedAnswer(null)
-    setTimeLeft(7)
+    setTimeLeft(QUESTION_TIME)
     setScore(0)
     setShowResults(false)
     setQuizStartTime(null)
@@ -311,7 +311,7 @@ function App() {
           <div className="quiz-header">
             <div className="quiz-icon">हि</div>
             <h1>हिंदी राजभाषा प्रश्नोत्तरी</h1>
-            <p>25 प्रश्न • 7 सेकंड प्रति प्रश्न • +3/-1 अंक</p>
+            <p>25 प्रश्न • 30 सेकंड प्रति प्रश्न • +3/-1 अंक</p>
           </div>
           
           <div className="registration-form">
@@ -477,23 +477,31 @@ function App() {
           <div className="detailed-results">
             <h4>विस्तृत परिणाम:</h4>
             <div className="results-list">
-              {answers.map((answer, index) => (
-                <div key={index} className={`result-item ${answer.correct ? 'correct' : answer.selectedAnswer !== null ? 'wrong' : 'unanswered'}`}>
-                  <div className="question-number">प्रश्न {index + 1}</div>
-                  <div className="result-details">
-                    <p className="question-text">{answer.question}</p>
-                    <div className="answer-info">
-                      {answer.selectedAnswer !== null ? (
-                        <p><strong>आपका उत्तर:</strong> {questions[index].options[answer.selectedAnswer]}</p>
-                      ) : (
-                        <p><strong>आपका उत्तर:</strong> अनुत्तरित</p>
-                      )}
-                      <p><strong>सही उत्तर:</strong> {questions[index].options[answer.correctAnswer]}</p>
-                      <p><strong>अंक:</strong> {answer.points > 0 ? `+${answer.points}` : answer.points}</p>
+              {answers.map((answer, index) => {
+                const question = questions.find(q => q.id === answer.questionId);
+                if (!question) return null; // skip if mismatch
+
+                return (
+                  <div 
+                    key={index} 
+                    className={`result-item ${answer.correct ? 'correct' : answer.selectedAnswer !== null ? 'wrong' : 'unanswered'}`}
+                  >
+                    <div className="question-number">प्रश्न {index + 1}</div>
+                    <div className="result-details">
+                      <p className="question-text">{question.question}</p>
+                      <div className="answer-info">
+                        {answer.selectedAnswer !== null ? (
+                          <p><strong>आपका उत्तर:</strong> {question.options[answer.selectedAnswer]}</p>
+                        ) : (
+                          <p><strong>आपका उत्तर:</strong> अनुत्तरित</p>
+                        )}
+                        <p><strong>सही उत्तर:</strong> {question.options[answer.correctAnswer]}</p>
+                        <p><strong>अंक:</strong> {answer.points > 0 ? `+${answer.points}` : answer.points}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
           
