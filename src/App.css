@@ -133,6 +133,21 @@ button {
   background: #e55b29;
 }
 
+.skip-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #6c757d;  /* gray */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.skip-btn:hover {
+  background-color: #5a6268;
+}
+
 /* Quiz progress */
 .quiz-progress {
   display: flex;
@@ -177,6 +192,29 @@ button {
   font-size: 1.2rem;
   margin-bottom: 16px;
   font-weight: 600;
+}
+
+.category-tag {
+  display: inline-block;
+  background: #e8f0fe;   /* light blue background */
+  color: #1a73e8;        /* Google blue text */
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;   /* pill shape */
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.question-image {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.question-image img {
+  max-width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .options-container {
