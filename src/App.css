@@ -243,8 +243,29 @@ button {
 }
 
 /* Results */
+.saving-results {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.save-message {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 6px;
+  text-align: center;
+}
+
 .results-header h2 {
   text-align: center;
+  margin-top: 16px;
   margin-bottom: 16px;
   color: #222;
 }
@@ -264,8 +285,13 @@ button {
 
 .final-score h3 {
   margin: 0;
+  margin-bottom: 8px;
   font-size: 1.4rem;
   color: #222;
+}
+
+.final-score p {
+  margin: 0;
 }
 
 .stat {
@@ -277,9 +303,9 @@ button {
   font-weight: bold;
 }
 
-.stat-number.correct { color: #28a745; }
-.stat-number.wrong { color: #d9534f; }
-.stat-number.unanswered { color: #6c757d; }
+.stat-number.correct { color: #28a745; margin: 8px; }
+.stat-number.wrong { color: #d9534f; margin: 8px; }
+.stat-number.unanswered { color: #6c757d; margin: 8px; }
 
 .results-list {
   margin-top: 20px;
