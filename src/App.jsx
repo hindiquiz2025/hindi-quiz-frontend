@@ -797,37 +797,6 @@ function App() {
             </div>
           </div>
           
-          <div className="detailed-results">
-            <h4>विस्तृत परिणाम:</h4>
-            <div className="results-list">
-              {answers.map((answer, index) => {
-                const question = questions.find(q => q.id === answer.questionId);
-                if (!question) return null; // skip if mismatch
-
-                return (
-                  <div 
-                    key={index} 
-                    className={`result-item ${answer.correct ? 'correct' : answer.selectedAnswer !== null ? 'wrong' : 'unanswered'}`}
-                  >
-                    <div className="question-number">प्रश्न {index + 1}</div>
-                    <div className="result-details">
-                      <p className="question-text">{question.question}</p>
-                      <div className="answer-info">
-                        {answer.selectedAnswer !== null ? (
-                          <p><strong>आपका उत्तर:</strong> {question.options[answer.selectedAnswer]}</p>
-                        ) : (
-                          <p><strong>आपका उत्तर:</strong> अनुत्तरित</p>
-                        )}
-                        <p><strong>सही उत्तर:</strong> {question.options[answer.correctAnswer]}</p>
-                        <p><strong>अंक:</strong> {answer.points > 0 ? `+${answer.points}` : answer.points}</p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          
           <button className="restart-btn" onClick={resetQuiz}>
             नई प्रश्नोत्तरी शुरू करें
           </button>
