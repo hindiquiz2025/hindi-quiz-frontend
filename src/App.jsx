@@ -514,7 +514,6 @@ function App() {
   }
 
   const handleAnswerSelect = (answerIndex) => {
-    if (selectedAnswer !== null) return
     setSelectedAnswer(answerIndex)
   }
 
@@ -721,7 +720,6 @@ function App() {
                   key={index}
                   className={`option ${selectedAnswer === index ? 'selected' : ''}`}
                   onClick={() => handleAnswerSelect(index)}
-                  disabled={selectedAnswer !== null}
                 >
                   {String.fromCharCode(65 + index)}. {option}
                 </button>
