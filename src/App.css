@@ -285,6 +285,33 @@ button {
   text-align: center;
 }
 
+.org-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.org-logo {
+  height: 150px;
+  width: auto;
+}
+
+.org-text h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.org-text h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4b5563;
+}
+
 /* Header */
 .results-header h2 {
   font-size: 2rem;

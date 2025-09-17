@@ -763,12 +763,16 @@ function App() {
                 ⏳ परिणाम सुरक्षित किए जा रहे हैं...
               </div>
             )}
-            <img src="/logo.jpg" alt="Logo" className="quiz-logo" />
-            <div className="quiz-title">
-              <h1 className="hindi-title">संयुक्त मुख्य विस्फोटक नियंत्रक, पश्चिम मंडल, मुंबई</h1>
-              <h4 className="english-title">JOINT CHIEF CONTROLLER OF EXPLOSIVES, WEST CIRCLE, MUMBAI</h4>
+
+
+            <div className="org-header">
+              <img src="/logo.png" alt="Organization Logo" className="org-logo" />
+              <div className="org-text">
+                <h2>संयुक्त मुख्य विस्फोटक नियंत्रक, पश्चिम मंडल, मुंबई</h2>
+                <h3>JOINT CHIEF CONTROLLER OF EXPLOSIVES, WEST CIRCLE, MUMBAI</h3>
+              </div>
             </div>
-            
+
             <h2>प्रश्नोत्तरी पूर्ण!</h2>
             <div className="participant-info">
               <p><strong>आवेदक का नाम:</strong> {participant.name}</p>
