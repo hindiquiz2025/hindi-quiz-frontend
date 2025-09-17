@@ -764,12 +764,6 @@ function App() {
               </div>
             )}
 
-            {!isSaving && saveMessage && (
-              <div className="save-message">
-                {saveMessage}
-              </div>
-            )}
-
             <h2>प्रश्नोत्तरी पूर्ण!</h2>
             <div className="participant-info">
               <p><strong>आवेदक का नाम:</strong> {participant.name}</p>
