@@ -414,3 +414,23 @@ button {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.thank-you-message {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.thank-you-message h3 {
+  font-size: 1.5rem;
+  color: #16a34a;
+  margin-bottom: 0.5rem;
+}
+
+.thank-you-message p {
+  font-size: 1.1rem;
+  color: #374151;
+}
