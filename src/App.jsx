@@ -602,6 +602,13 @@ function App() {
       <div className="app">
         <div className="quiz-container">
           <div className="quiz-header">
+
+            <img src="/logo.jpg" alt="Logo" className="quiz-logo" />
+            <div className="quiz-title">
+              <h1 className="hindi-title">संयुक्त मुख्य विस्फोटक नियंत्रक, पश्चिम मंडल, मुंबई</h1>
+              <h4 className="english-title">JOINT CHIEF CONTROLLER OF EXPLOSIVES, WEST CIRCLE, MUMBAI</h4>
+            </div>
+
             <div className="quiz-icon">हि</div>
             <h1>हिंदी राजभाषा प्रश्नोत्तरी</h1>
             <p>40 प्रश्न • 20 सेकंड प्रति प्रश्न • +3/-1 अंक</p>
